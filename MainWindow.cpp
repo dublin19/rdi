@@ -52,10 +52,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 #endif
     QWidget *central = new QWidget(this);
     QHBoxLayout *layout = new QHBoxLayout(this);
+/*
     QImageReader reader("/Users/dublin/Pictures/Ich/IMG_5098.CR2");
     //reader.setScaledSize(QSize(1024, 768));
     QImage raw = reader.read();
     QSize size = reader.size();
+*/
 /*
     QPixmap pix;
     pix.load(imagePath);
@@ -67,20 +69,30 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     layout->addWidget(displayLbl);
     displayLbl->show();
     */
-
+/*
     QGraphicsScene *scene = new QGraphicsScene();
     QGraphicsView *view = new QGraphicsView();
+
+    QImage small = raw.scaled(QSize(1024, 768), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
 
     //if (raw.colorSpace().isValid()) {
         raw.convertToColorSpace(QColorSpace::SRgb);
     //}
 
-    scene->addPixmap(QPixmap::fromImage(raw));
+    scene->addPixmap(QPixmap::fromImage(small));
     view->setScene(scene);
     view->resize(1024, 768);
     view->setMaximumSize(QSize(1024, 768));
     view->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
     layout->addWidget(view);
+*/
+
+    imgPreview = new ImagePreview(this);
+    //imgPreview->setFixedSize(QSize(1280, 720));
+    imgPreview->scrollArea->setFixedSize(QSize(1280, 720));
+    imgPreview->loadImage("/Users/dublin/Pictures/Ich/IMG_5098.CR2");
+    layout->addWidget(imgPreview);
 
     QTextBrowser *txtBrowser = new QTextBrowser(this);
 

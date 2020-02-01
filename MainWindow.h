@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QLabel>
+#include "imagepreview.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -13,6 +14,8 @@ public:
     ~MainWindow();
 
     QLabel *displayLbl;
+
+    ImagePreview *imgPreview;
 };
 
 #endif // MAINWINDOW_H
