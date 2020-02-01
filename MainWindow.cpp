@@ -19,6 +19,9 @@
 #include <iomanip>
 #include <sstream>
 #include <QTextBrowser>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QColorSpace>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -59,9 +62,25 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     pix = pix.scaled(1024, 768, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     displayLbl->setPixmap(pix);
 */
-    displayLbl->setPixmap(QPixmap::fromImage(raw).scaled(1024, 768, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    /*
+    displayLbl->setPixmap(QPixmap::fromImage(raw).scaled(1024, 768, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     layout->addWidget(displayLbl);
     displayLbl->show();
+    */
+
+    QGraphicsScene *scene = new QGraphicsScene();
+    QGraphicsView *view = new QGraphicsView();
+
+    //if (raw.colorSpace().isValid()) {
+        raw.convertToColorSpace(QColorSpace::SRgb);
+    //}
+
+    scene->addPixmap(QPixmap::fromImage(raw));
+    view->setScene(scene);
+    view->resize(1024, 768);
+    view->setMaximumSize(QSize(1024, 768));
+    view->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+    layout->addWidget(view);
 
     QTextBrowser *txtBrowser = new QTextBrowser(this);
 
