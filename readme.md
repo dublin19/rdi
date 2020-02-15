@@ -1,8 +1,12 @@
+**INFORMATION:** This thing now works on Windows together with MinGW-W64 (and Qt 5.12.7 LTS)! I am going to update this README as soon as I finish focus on my current work... If you want to experiment on your own checkout [this](https://github.com/FMeinicke/QtRaw/issues/1) and [this](https://github.com/Exiv2/exiv2/issues/1101) and have fun!
+
+And by the way, also Canon CR3 is supported (except from exiv2 side, but I think we use a workaround with exiftool...)!
+
 ## What is this?
 
 I do not think anyone is going to stumble upon this, but anyway if this possibly happen.. welcome!
 
-RDI or RawImageDisplayer (yes, swapped the D and the I by accident) is a little testing application which tries to display a RAW image and the given EXIF metadata of it. It is not an application which goes into production, more like a playground which works and grow from time to time. Probably some of the things I try out here are going into my photo application **Luster** later on...
+RDI or RawImageDisplayer (yes, swapped the D and the I by accident) is a little testing application which tries to display a RAW image and the given EXIF metadata of it. It is not an application which goes into production, more like a playground which works and grow from time to time. Probably some of the things I try out here are going into my photo application later on...
 
 Oh, and remember, something here laying around (such as files, codes and classes) could be possibly unused or were commented...
 
@@ -12,7 +16,7 @@ Oh, and remember, something here laying around (such as files, codes and classes
 
 Before building RDI I should state that I work on macOS Catalina. This means this build guide heavily relies on macOS as platform itself whilst that I use [homebrew](https://brew.sh) to install and update most of my packages, so:
 
-- [Qt 5.14.0](https://download.qt.io/) *(I strongly recommend exactly this version because it's my production stable)*
+- [Qt 5.14.0](https://download.qt.io/) *(I strongly recommend exactly this version because it's my macOS install base, switching so LTS somewhat later)*
 - [Homebrew](https://brew.sh) *(you could possibly manually build all these things, but thats not what I do in the moment)*
 - [Git](https://git-scm.com) *(you could also use the Git which is shipped with macOS)*
 - [Xcode Command Line Tools](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) *(just install Qt and you get what you need)*
